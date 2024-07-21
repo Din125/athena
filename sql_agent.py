@@ -13,7 +13,7 @@ from langchain_openai import ChatOpenAI
 def create_agent(db_uri,model="gpt-4"):
     db = SQLDatabase.from_uri(db_uri)
     return create_sql_agent(
-        llm=ChatOpenAI(model=model),
+        llm=ChatOpenAI(model=model,api_key=os.getenv("OPEN_AI_API_KEY")),
         db=db
     )
 
